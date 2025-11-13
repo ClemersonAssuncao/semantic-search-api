@@ -23,3 +23,7 @@ python -m uvicorn app.main:app --reload
 
 A aplicação estará disponível em:
 - API: `http://localhost:8000`
+
+## Documentation
+
+- **[Embedding Models](docs/embedding-models.md)** - Learn about available embedding models and how to configure them for your semantic search needs

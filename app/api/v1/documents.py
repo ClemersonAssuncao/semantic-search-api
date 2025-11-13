@@ -1,3 +1,4 @@
+import logging
 from typing import List
 from fastapi import status, APIRouter, Depends, HTTPException
 from requests import Session
@@ -10,6 +11,7 @@ from app.core.mappers.document_mapper import DocumentMapper
 from app.infrastructure.persistence.db.session import get_db
 from app.infrastructure.persistence.repositories.document_repository import DocumentRepository
 
+logger = logging.getLogger(__name__)
 router = APIRouter(prefix="/api/v1/documents", tags=["documents"])
 
 # Endpoint to create multiple documents
@@ -24,10 +26,12 @@ def create_document(
     embedding_service: EmbeddingService = Depends(get_embedding_service),
 ):
     '''Create multiple documents with their embeddings.'''
+    logger.info(f"Creating {len(payload)} documents")
     repo = DocumentRepository(db)
 
     # Aqui vou gerar os embeddings mais tarde
     contents = [doc.content for doc in payload]
+    logger.debug(f"Generating embeddings for {len(contents)} texts")
     embeddings = embedding_service.embed_texts(contents)
 
     models = [
@@ -36,6 +40,7 @@ def create_document(
     ]
     
     saved_docs = repo.create_many(models)
+    logger.info(f"Successfully created {len(saved_docs)} documents")
     return [DocumentMapper.to_read(doc) for doc in saved_docs]
 
 # Endpoint to list all documents
@@ -44,8 +49,10 @@ def list_documents(
     db: Session = Depends(get_db),
 ):
     '''List all documents in the repository.'''
+    logger.info("Listing all documents")
     repo = DocumentRepository(db)
     documents = repo.list_all()
+    logger.debug(f"Found {len(documents)} documents")
     return [DocumentMapper.to_read(doc) for doc in documents]
 
 # Endpoint to get a document by ID
@@ -55,8 +62,11 @@ def get_document(
     db: Session = Depends(get_db),
 ):
     '''Get a document by its ID.'''
+    logger.info(f"Retrieving document with id: {document_id}")
     repo = DocumentRepository(db)
     document = repo.get_by_id(document_id)
     if document is None:
+        logger.warning(f"Document not found: {document_id}")
         raise HTTPException(status_code=404, detail="Document not found")
+    logger.debug(f"Found document: {document.title}")
     return DocumentMapper.to_read(document)
