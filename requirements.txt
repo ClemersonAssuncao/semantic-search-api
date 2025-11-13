@@ -5,3 +5,7 @@ pydantic
 pydantic_settings
 sentence-transformers
 numpy
+pytest
+pytest-cov
+pytest-mock
+httpx

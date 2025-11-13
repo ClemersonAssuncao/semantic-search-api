@@ -30,3 +30,4 @@ The application will be available at:
 
 - **[Embedding Models](docs/embedding-models.md)** - Learn about available embedding models and how to configure them for your semantic search needs
 - **[Docker Guide](docs/docker.md)** - Complete guide for running the application in Docker containers with environment variable configuration
+- **[Testing Guide](docs/testing.md)** - Comprehensive guide for writing and running unit tests
