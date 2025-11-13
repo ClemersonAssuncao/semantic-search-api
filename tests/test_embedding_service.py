@@ -1,7 +1,7 @@
 """Tests for EmbeddingService."""
 import pytest
 import numpy as np
-from unittest.mock import Mock, patch, MagicMock
+from unittest.mock import Mock, patch
 
 from app.core.services.embedding_service import EmbeddingService, get_embedding_service
 

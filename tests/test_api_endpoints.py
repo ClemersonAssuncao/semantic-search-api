@@ -1,6 +1,5 @@
 """Integration tests for API endpoints."""
-import pytest
-from fastapi.testclient import TestClient
+import json
 import numpy as np
 
 from app.infrastructure.persistence.models.document import DocumentModel
@@ -151,9 +150,11 @@ class TestQueryEndpoints:
         query_embedding = np.array([0.1, 0.2, 0.3], dtype=np.float32)
         mock_embedding_service.embed_texts.return_value = query_embedding.reshape(1, -1)
         
-        response = client.get(
+        response = client.request(
+            "GET",
             "/api/v1/query/",
-            params={"query": "test query", "top_k": 5}
+            content=json.dumps({"query": "test query", "top_k": 5}),
+            headers={"Content-Type": "application/json"}
         )
         
         assert response.status_code == 200
@@ -179,12 +180,15 @@ class TestQueryEndpoints:
         client.post("/api/v1/documents/", json=payload)
         
         # Query documents
+        import json
         query_embedding = np.array([1.0, 0.0, 0.0], dtype=np.float32)
         mock_embedding_service.embed_texts.return_value = query_embedding.reshape(1, -1)
         
-        response = client.get(
+        response = client.request(
+            "GET",
             "/api/v1/query/",
-            params={"query": "python programming", "top_k": 2}
+            content=json.dumps({"query": "python programming", "top_k": 2}),
+            headers={"Content-Type": "application/json"}
         )
         
         assert response.status_code == 200
@@ -211,12 +215,15 @@ class TestQueryEndpoints:
         client.post("/api/v1/documents/", json=payload)
         
         # Query documents
+        import json
         query_embedding = np.array([1.0, 0.0, 0.0], dtype=np.float32)
         mock_embedding_service.embed_texts.return_value = query_embedding.reshape(1, -1)
         
-        response = client.get(
+        response = client.request(
+            "GET",
             "/api/v1/query/",
-            params={"query": "find exact match", "top_k": 2}
+            content=json.dumps({"query": "find exact match", "top_k": 2}),
+            headers={"Content-Type": "application/json"}
         )
         
         data = response.json()
@@ -237,9 +244,11 @@ class TestQueryEndpoints:
         query_embedding = np.array([0.1, 0.2, 0.3], dtype=np.float32)
         mock_embedding_service.embed_texts.return_value = query_embedding.reshape(1, -1)
         
-        response = client.get(
+        response = client.request(
+            "GET",
             "/api/v1/query/",
-            params={"query": "test"}
+            content=json.dumps({"query": "test"}),
+            headers={"Content-Type": "application/json"}
         )
         
         assert response.status_code == 200
@@ -263,9 +272,11 @@ class TestQueryEndpoints:
         query_embedding = np.random.randn(3).astype(np.float32)
         mock_embedding_service.embed_texts.return_value = query_embedding.reshape(1, -1)
         
-        response = client.get(
+        response = client.request(
+            "GET",
             "/api/v1/query/",
-            params={"query": "find documents", "top_k": 3}
+            content=json.dumps({"query": "find documents", "top_k": 3}),
+            headers={"Content-Type": "application/json"}
         )
         
         data = response.json()

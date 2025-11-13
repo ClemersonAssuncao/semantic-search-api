@@ -1,7 +1,7 @@
 """Tests for QueryService."""
 import pytest
 import numpy as np
-from unittest.mock import Mock, MagicMock
+from unittest.mock import Mock
 
 from app.core.services.query_service import QueryService
 from app.api.schemas.query import DocumentQueryResult
