@@ -24,11 +24,16 @@ class EmbeddingService:
         return self._model
     
     def embed_texts(self, texts: List[str]) -> np.ndarray:
+        '''Generate normalized embeddings for a list of texts.'''
         logger.debug(f"Encoding {len(texts)} texts with model {self.model_name}")
+        
         embeddings = self.model.encode(texts, convert_to_numpy=True)
+        embeddings = embeddings.astype(np.float32)
+
         norms = np.linalg.norm(embeddings, axis=1, keepdims=True)
         embeddings = embeddings / (norms + 1e-10)
         logger.debug(f"Generated normalized embeddings with shape {embeddings.shape}")
+        
         return embeddings
 
 @lru_cache

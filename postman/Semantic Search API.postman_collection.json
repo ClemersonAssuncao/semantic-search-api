@@ -1,0 +1,190 @@
+{
+	"info": {
+		"_postman_id": "7404284d-8c95-4083-900a-114969db2b49",
+		"name": "Semantic Search API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "39238890",
+		"_collection_link": "https://postech-challenge.postman.co/workspace/Postech-Challenge~29a75c5f-d39e-4a2e-be61-4e028e958071/collection/39238890-7404284d-8c95-4083-900a-114969db2b49?action=share&source=collection_link&creator=39238890"
+	},
+	"item": [
+		{
+			"name": "Documents",
+			"item": [
+				{
+					"name": "Create All Document",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[\r\n  {\r\n    \"title\": \"Introduction to Artificial Intelligence\",\r\n    \"content\": \"Artificial intelligence is the field of computing dedicated to creating systems capable of performing tasks that normally require human intelligence, such as reasoning, learning, perception, and decision-making. Modern models use transformer architectures and embeddings for semantic understanding.\"\r\n  },\r\n  {\r\n    \"title\": \"Traditional Lasagna Recipe\",\r\n    \"content\": \"To prepare a traditional Italian lasagna, you must layer pasta sheets, tomato sauce, seasoned ground beef, and mozzarella cheese. The secret is slowly cooking the sauce to intensify the flavor.\"\r\n  },\r\n  {\r\n    \"title\": \"Practical Guide to Personal Finance\",\r\n    \"content\": \"Financial control begins with a detailed budget. Organize fixed expenses, variable expenses, and investments. Diversifying allocations between fixed income and variable income reduces risks and increases long-term security.\"\r\n  },\r\n  {\r\n    \"title\": \"Introduction to Machine Learning\",\r\n    \"content\": \"Machine learning is a subfield of artificial intelligence that studies algorithms capable of learning patterns from data. Key models include decision trees, neural networks, and ensemble methods.\"\r\n  },\r\n  {\r\n    \"title\": \"History of World War II\",\r\n    \"content\": \"World War II was a global conflict between 1939 and 1945 involving major world powers. Events such as the invasion of Poland and the attack on Pearl Harbor were decisive for the course of the war.\"\r\n  },\r\n  {\r\n    \"title\": \"Strength Training for Beginners\",\r\n    \"content\": \"A weight training program for beginners should focus on compound movements such as squats, bench presses, and deadlifts. Gradual load progression ensures safe and efficient adaptations.\"\r\n  },\r\n  {\r\n    \"title\": \"Summary of the Book *Dom Casmurro*\",\r\n    \"content\": \"*Dom Casmurro*, by Machado de Assis, explores themes such as memory, jealousy, and doubt through the narrative of Bentinho, who suspects Capitu of infidelity. The work is marked by the author's ironic and subjective style.\"\r\n  },\r\n  {\r\n    \"title\": \"Studies on Solar Energy\",\r\n    \"content\": \"Solar energy is obtained by converting sunlight into electricity through photovoltaic panels. It is a renewable and increasingly accessible source, playing a fundamental role in the global energy transition.\"\r\n  },\r\n  {\r\n    \"title\": \"Concepts of Relational Databases\",\r\n    \"content\": \"Relational databases organize information into tables connected by primary and foreign keys. SQL is the standard language for querying, manipulating, and defining data.\"\r\n  },\r\n  {\r\n    \"title\": \"Article: The Future of Electric Cars\",\r\n    \"content\": \"Electric vehicles are gaining popularity due to cost reductions and advances in lithium-ion batteries. Charging infrastructure and government incentives are accelerating their adoption.\"\r\n  },\r\n  {\r\n    \"title\": \"Urban Gardening Guide\",\r\n    \"content\": \"Urban gardening makes it possible to grow plants, herbs, and even small vegetables in apartments. Techniques such as hydroponics and smart use of artificial lighting support indoor cultivation.\"\r\n  },\r\n  {\r\n    \"title\": \"Basics of Constitutional Law\",\r\n    \"content\": \"Constitutional law establishes the structure of the State, defines fundamental rights, and organizes the separation of powers. Modern constitutions guarantee civil liberties and oversight mechanisms.\"\r\n  },\r\n  {\r\n    \"title\": \"How to Meditate to Reduce Anxiety\",\r\n    \"content\": \"Mindfulness meditation helps reduce anxiety by focusing on the present and observing thoughts without judgment. Daily practice, even if brief, improves emotional well-being.\"\r\n  },\r\n  {\r\n    \"title\": \"Study on Neural Networks\",\r\n    \"content\": \"Artificial neural networks are composed of layers of interconnected neurons that process information through weights and activations. Deep models form the foundation of modern deep learning.\"\r\n  },\r\n  {\r\n    \"title\": \"Report: The Evolution of Smartphones\",\r\n    \"content\": \"Smartphones have evolved rapidly, incorporating advanced cameras, powerful processors, and 5G connectivity. AI integration has increased personalization and automation in interactions.\"\r\n  },\r\n  {\r\n    \"title\": \"Research on Climate Change\",\r\n    \"content\": \"Climate change results from rising concentrations of greenhouse gases. Its impacts include sea level rise, extreme weather events, and alterations to ecosystems.\"\r\n  },\r\n  {\r\n    \"title\": \"Introduction to Web Development\",\r\n    \"content\": \"Web development involves HTML, CSS, and JavaScript as essential technologies. Modern frameworks such as React, Vue, and Angular make it easier to build interactive interfaces.\"\r\n  },\r\n  {\r\n    \"title\": \"Complete Python Guide\",\r\n    \"content\": \"Python is a versatile programming language with simple syntax and a large library ecosystem. It is widely used in automation, data science, backend development, and machine learning.\"\r\n  },\r\n  {\r\n    \"title\": \"Cryptocurrency Market Analysis\",\r\n    \"content\": \"Cryptocurrencies such as Bitcoin and Ethereum operate on decentralized blockchain networks. Their market is volatile, influenced by institutional adoption and regulations.\"\r\n  },\r\n  {\r\n    \"title\": \"Notes on Transformers and Embeddings\",\r\n    \"content\": \"Transformer models revolutionized natural language processing through self-attention. Embeddings allow texts to be represented as dense vectors, which are essential for semantic search.\"\r\n  }\r\n]\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/v1/documents",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"documents"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Document",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {},
+								"requests": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "[\r\n  {\r\n    \"title\": \"Beginner's Guide to Cloud Computing\",\r\n    \"content\": \"Cloud computing provides on-demand access to computing resources such as servers, storage, and databases over the internet. Popular platforms like AWS, Azure, and Google Cloud allow businesses to scale efficiently while reducing infrastructure costs.\"\r\n  },\r\n  {\r\n    \"title\": \"Introduction to Data Visualization\",\r\n    \"content\": \"Data visualization is the practice of representing information graphically to reveal patterns, trends, and insights. Tools like Matplotlib, Tableau, and Power BI help transform raw data into understandable visual formats.\"\r\n  }\r\n]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/v1/documents",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"documents"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Document by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/v1/documents/{{document_id}}",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"documents",
+								"{{document_id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List All Documents",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/v1/documents",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"documents"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Semantic Search",
+			"item": [
+				{
+					"name": "Query Document",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"query\": \"food\",\r\n    \"top_k\": 5\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/v1/query",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"query"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"requests": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"requests": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": ""
+		}
+	]
+}

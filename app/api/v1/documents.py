@@ -29,7 +29,6 @@ def create_document(
     logger.info(f"Creating {len(payload)} documents")
     repo = DocumentRepository(db)
 
-    # Aqui vou gerar os embeddings mais tarde
     contents = [doc.content for doc in payload]
     logger.debug(f"Generating embeddings for {len(contents)} texts")
     embeddings = embedding_service.embed_texts(contents)

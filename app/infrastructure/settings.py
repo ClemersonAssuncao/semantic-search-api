@@ -6,7 +6,7 @@ class Settings(BaseSettings):
 
     app_name: str = "Semantic Search API"
     database_url: str = "sqlite:///./documents.db"
-    embedding_model_name: str = "all-MiniLM-L6-v2"
+    embedding_model_name: str = "paraphrase-multilingual-MiniLM-L12-v2"
     default_query_top_k: int = 5
     log_level: str = "INFO"
 

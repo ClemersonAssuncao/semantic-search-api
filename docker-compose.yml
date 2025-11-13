@@ -1,0 +1,16 @@
+version: '3.8'
+
+services:
+  api:
+    build: .
+    ports:
+      - "8000:8000"
+    environment:
+      - APP_NAME=Semantic Search API
+      - DATABASE_URL=sqlite:///./documents.db
+      - EMBEDDING_MODEL_NAME=all-MiniLM-L12-v2
+      - DEFAULT_QUERY_TOP_K=5
+      - LOG_LEVEL=INFO
+    # volumes:
+    #   - ./documents.db:/app/documents.db
+    restart: unless-stopped
