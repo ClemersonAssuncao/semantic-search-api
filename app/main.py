@@ -1,11 +1,15 @@
 from fastapi import FastAPI
 
 from app.api.v1 import documents
-
+from app.db.base import Base
+from app.db.session import engine
 
 
 def create_app() -> FastAPI:
-    app = FastAPI(title="My FastAPI Application")
+    app = FastAPI(title="Semantic Search API")
+
+    # Lembrar de usar migrations depois, alembic
+    Base.metadata.create_all(bind=engine)
 
     app.include_router(documents.router)
 

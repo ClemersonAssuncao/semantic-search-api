@@ -1,21 +1,28 @@
 from typing import List
-from fastapi import APIRouter
+from fastapi import APIRouter, Depends
+from requests import Session
 
+from app.db.session import get_db
 from app.schemas.document import DocumentRead, DocumentCreate
+from mappers.document_mapper import DocumentMapper
+from repositories.document_repository import DocumentRepository
 
 router = APIRouter(prefix="/api/v1/documents", tags=["documents"])
 
 @router.post("/", response_model=List[DocumentRead])
 def create_document(
     payload: List[DocumentCreate],
+    db: Session = Depends(get_db),
 ):
-    docs = []
-    for i, doc in enumerate(payload):
-        print(f"Creating document: {doc.title}")
-        docs.append(DocumentRead(
-            id=i + 1,
-            title=doc.title,
-            content=doc.content,
-        ))
+    
+    repo = DocumentRepository(db)
 
-    return docs
+    # Aqui vou gerar os embeddings mais tarde
+    contents = [doc.content for doc in payload]
+
+    models = [
+        DocumentMapper.to_model(doc) for doc in payload
+    ]
+    
+    saved_docs = repo.create_many(models)
+    return [DocumentMapper.to_read(doc) for doc in saved_docs]
