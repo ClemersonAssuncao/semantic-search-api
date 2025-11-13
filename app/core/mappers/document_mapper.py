@@ -1,5 +1,5 @@
-from app.models.document import DocumentModel
-from app.schemas.document import DocumentCreate, DocumentRead
+from app.infrastructure.persistence.models.document import DocumentModel
+from app.api.schemas.document import DocumentCreate, DocumentRead
 
 class DocumentMapper:
     @staticmethod

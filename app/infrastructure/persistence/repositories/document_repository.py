@@ -1,12 +1,13 @@
 from typing import List
 from sqlalchemy.orm import Session
-from app.models.document import DocumentModel
+from app.infrastructure.persistence.models.document import DocumentModel
 
 
 class DocumentRepository:
     def __init__(self, db: Session):
         self.db = db
 
+    # Acabei não usando esse método por enquanto
     def create(self, doc: DocumentModel) -> DocumentModel:
         self.db.add(doc)
         self.db.commit()

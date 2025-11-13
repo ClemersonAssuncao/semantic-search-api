@@ -1,8 +1,8 @@
 from fastapi import FastAPI
 
 from app.api.v1 import documents
-from app.db.base import Base
-from app.db.session import engine
+from app.infrastructure.persistence.db.base import Base
+from app.infrastructure.persistence.db.session import engine
 
 
 def create_app() -> FastAPI:

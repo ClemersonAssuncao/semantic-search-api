@@ -1,5 +1,5 @@
-from sqlalchemy import Column, Integer, String, LargeBinary
-from app.db.base import Base
+from sqlalchemy import Column, Integer, String
+from app.infrastructure.persistence.db.base import Base
 
 class DocumentModel(Base):
     __tablename__ = "documents"

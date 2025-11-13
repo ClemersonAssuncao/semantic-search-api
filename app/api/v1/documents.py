@@ -2,10 +2,10 @@ from typing import List
 from fastapi import APIRouter, Depends
 from requests import Session
 
-from app.db.session import get_db
-from app.schemas.document import DocumentRead, DocumentCreate
-from mappers.document_mapper import DocumentMapper
-from repositories.document_repository import DocumentRepository
+from app.infrastructure.persistence.db.session import get_db
+from app.infrastructure.persistence.repositories.document_repository import DocumentRepository
+from app.api.schemas.document import DocumentRead, DocumentCreate
+from app.core.mappers.document_mapper import DocumentMapper
 
 router = APIRouter(prefix="/api/v1/documents", tags=["documents"])
 
