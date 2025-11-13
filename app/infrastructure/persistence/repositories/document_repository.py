@@ -23,3 +23,6 @@ class DocumentRepository:
 
     def list_all(self) -> List[DocumentModel]:
         return self.db.query(DocumentModel).all()
+    
+    def get_by_id(self, document_id: int) -> DocumentModel | None:
+        return self.db.query(DocumentModel).filter(DocumentModel.id == document_id).first()
