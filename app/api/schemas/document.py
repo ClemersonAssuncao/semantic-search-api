@@ -10,7 +10,7 @@ class DocumentCreate(DocumentBase):
 class DocumentRead(DocumentBase):
     id: int
 
-class DocumentSearchResult(BaseModel):
+class DocumentQueryResult(BaseModel):
     id: int
     title: str
     score: float

@@ -1,7 +1,7 @@
 from fastapi import Depends
 from sqlalchemy.orm import Session
 
-from app.core.services.search_service import SearchService
+from app.core.services.query_service import QueryService
 
 from app.infrastructure.persistence.db.session import get_db
 from app.infrastructure.persistence.repositories.document_repository import DocumentRepository
@@ -11,8 +11,8 @@ from app.core.services.embedding_service import EmbeddingService, get_embedding_
 def get_document_repository(db: Session = Depends(get_db)) -> DocumentRepository:
     return DocumentRepository(db)
 
-def get_search_service(
+def get_query_service(
     repo: DocumentRepository = Depends(get_document_repository),
     embedding_service: EmbeddingService = Depends(get_embedding_service),
-) -> SearchService:
-    return SearchService(repo=repo, embedding_service=embedding_service)
+) -> QueryService:
+    return QueryService(repo=repo, embedding_service=embedding_service)

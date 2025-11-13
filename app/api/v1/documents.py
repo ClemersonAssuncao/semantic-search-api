@@ -23,7 +23,7 @@ def create_document(
     db: Session = Depends(get_db),
     embedding_service: EmbeddingService = Depends(get_embedding_service),
 ):
-    
+    '''Create multiple documents with their embeddings.'''
     repo = DocumentRepository(db)
 
     # Aqui vou gerar os embeddings mais tarde
@@ -43,6 +43,7 @@ def create_document(
 def list_documents(
     db: Session = Depends(get_db),
 ):
+    '''List all documents in the repository.'''
     repo = DocumentRepository(db)
     documents = repo.list_all()
     return [DocumentMapper.to_read(doc) for doc in documents]
@@ -53,6 +54,7 @@ def get_document(
     document_id: int,
     db: Session = Depends(get_db),
 ):
+    '''Get a document by its ID.'''
     repo = DocumentRepository(db)
     document = repo.get_by_id(document_id)
     if document is None:

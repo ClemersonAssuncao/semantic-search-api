@@ -5,9 +5,10 @@ import numpy as np
 from app.infrastructure.settings import settings
 from app.infrastructure.persistence.repositories.document_repository import DocumentRepository
 from app.core.services.embedding_service import EmbeddingService
-from app.api.schemas.search import SearchResponse, DocumentSearchResult
+from app.api.schemas.query import DocumentQueryResult
 
-class SearchService:
+class QueryService:
+    '''Service to perform semantic search queries.'''
 
     def __init__(self, 
                  repo: DocumentRepository, 
@@ -16,9 +17,8 @@ class SearchService:
         self.embedding_service = embedding_service
         pass
 
-    def search(self, query: str, top_k: int | None = None) -> List[DocumentSearchResult]:
-        top_k = top_k or settings.default_search_top_k
-        query_embedding = self.embedding_service.embed_texts([query])[0]
+    def search(self, query: str, top_k: int | None = None) -> List[DocumentQueryResult]:
+        top_k = top_k or settings.default_query_top_k
 
         documents = self.repo.list_all()
 
@@ -29,23 +29,24 @@ class SearchService:
             np.frombuffer(doc.embedding, dtype=np.float32) for doc in documents
         ])
 
-        query_embedding = self.embedding_service.embed_texts([query])[0]
-
         # similaridade coseno
-        doc_norms = np.linalg.norm(doc_embeddings, axis=1)
-        query_norm = np.linalg.norm(query_embedding)
-        sims = (doc_embeddings @ query_embedding) / (doc_norms * query_norm + 1e-10)
+        query_embedding = self.embedding_service.embed_texts([query])[0]
+        sims = self._cosine_similarities(doc_embeddings, query_embedding)
 
+        top_k = min(top_k, len(documents))
         indices = np.argsort(-sims)[:top_k]
 
-        results: List[DocumentSearchResult] = []
+        results: List[DocumentQueryResult] = []
         for idx in indices:
             doc = documents[idx]
             results.append(
-                DocumentSearchResult(
+                DocumentQueryResult(
                     id=doc.id,
                     title=doc.title,
                     score=float(sims[idx]),
                 )
             )
         return results
+    
+    def _cosine_similarities(self, doc_embeddings: np.ndarray, query_embedding: np.ndarray) -> np.ndarray:
+        return (doc_embeddings @ query_embedding)
