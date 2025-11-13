@@ -1,3 +1,4 @@
+from functools import lru_cache
 from typing import List
 import numpy as np
 
@@ -19,3 +20,7 @@ class EmbeddingService:
     def embed_texts(self, texts: List[str]) -> np.ndarray:
         embeddings = self.model.encode(texts, convert_to_numpy=True)
         return embeddings
+
+@lru_cache
+def get_embedding_service() -> EmbeddingService:
+    return EmbeddingService()

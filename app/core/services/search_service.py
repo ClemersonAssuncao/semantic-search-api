@@ -1,3 +1,4 @@
+from functools import lru_cache
 from typing import List
 import numpy as np
 
@@ -16,18 +17,14 @@ class SearchService:
         pass
 
     def search(self, query: str, top_k: int | None = None) -> List[DocumentSearchResult]:
-        # Gera o embedding da query
-
         top_k = top_k or settings.default_search_top_k
         query_embedding = self.embedding_service.embed_texts([query])[0]
 
-        # Recupera todos os documentos
         documents = self.repo.list_all()
 
         if not documents:
             return []
 
-        # Calcula similaridades (exemplo simples usando produto interno)
         doc_embeddings = np.vstack([
             np.frombuffer(doc.embedding, dtype=np.float32) for doc in documents
         ])

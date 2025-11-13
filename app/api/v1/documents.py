@@ -2,10 +2,9 @@ from typing import List
 from fastapi import status, APIRouter, Depends, HTTPException
 from requests import Session
 
-from app.api.deps import get_embedding_service
 from app.api.schemas.document import DocumentRead, DocumentCreate
 
-from app.core.services.embedding_service import EmbeddingService
+from app.core.services.embedding_service import EmbeddingService, get_embedding_service
 from app.core.mappers.document_mapper import DocumentMapper
 
 from app.infrastructure.persistence.db.session import get_db
