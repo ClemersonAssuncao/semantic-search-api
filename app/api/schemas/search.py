@@ -2,9 +2,10 @@ from pydantic import BaseModel
 from typing import List
 from app.api.schemas.document import DocumentSearchResult
 
-class QueryRequest(BaseModel):
+class SearchRequest(BaseModel):
     query: str
+    top_k: int | None = None
 
-class QueryResponse(BaseModel):
+class SearchResponse(BaseModel):
     query: str
     results: List[DocumentSearchResult]

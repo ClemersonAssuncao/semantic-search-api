@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 
-from app.api.v1 import documents, query
+from app.api.v1 import documents, search
 from app.infrastructure.persistence.db.base import Base
 from app.infrastructure.persistence.db.session import engine
 
@@ -12,7 +12,7 @@ def create_app() -> FastAPI:
     Base.metadata.create_all(bind=engine)
 
     app.include_router(documents.router)
-    app.include_router(query.router)
+    app.include_router(search.router)
 
     return app
 

@@ -2,6 +2,7 @@ from app.infrastructure.persistence.models.document import DocumentModel
 from app.api.schemas.document import DocumentCreate, DocumentRead
 
 class DocumentMapper:
+
     @staticmethod
     def to_model(dto: DocumentCreate, embeddings) -> DocumentModel:
         # Converte DTO >> ORM Model (para persistir).
