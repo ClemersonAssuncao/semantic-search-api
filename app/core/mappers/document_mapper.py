@@ -3,11 +3,12 @@ from app.api.schemas.document import DocumentCreate, DocumentRead
 
 class DocumentMapper:
     @staticmethod
-    def to_model(dto: DocumentCreate) -> DocumentModel:
+    def to_model(dto: DocumentCreate, embeddings) -> DocumentModel:
         # Converte DTO >> ORM Model (para persistir).
         return DocumentModel(
             title=dto.title,
-            content=dto.content
+            content=dto.content,
+            embedding=embeddings.tobytes() if hasattr(embeddings, 'tobytes') else embeddings,
         )
     
     @staticmethod
