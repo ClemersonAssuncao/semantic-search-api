@@ -1,5 +1,51 @@
 # SEMANTIC SEARCH API
 
+## Overview
+
+A high-performance **Semantic Search API** built with FastAPI that enables intelligent document retrieval using neural embeddings. Unlike traditional keyword-based search, this API understands the meaning and context of queries to find the most relevant documents.
+
+### What is Semantic Search?
+
+Semantic search uses machine learning models to convert text into numerical vectors (embeddings) that capture meaning. Documents with similar meanings have similar vectors, enabling search by concepts rather than just keywords.
+
+**Example:**
+- Query: "python programming"
+- Matches: "Learn Python", "Python tutorial", "Programming with Python"
+- Even without exact keyword matches, semantically related content is found
+
+### Key Features
+
+- 🔍 **Semantic Search**: Find documents by meaning, not just keywords
+- 🚀 **Fast API**: Built with FastAPI for high performance and async support
+- 📊 **Vector Embeddings**: Uses SentenceTransformers for state-of-the-art embeddings
+- 💾 **SQLite Database**: Lightweight storage with SQLAlchemy ORM
+- 📝 **Document Management**: Store and retrieve documents with metadata
+- 🎯 **Similarity Ranking**: Results ordered by cosine similarity scores
+- 🐳 **Docker Ready**: Complete containerization support
+- ✅ **Fully Tested**: 54 tests with >80% code coverage
+
+### Architecture
+
+![Architecture Image](docs/assets/images/architecture.jpg)
+
+### API Endpoints
+
+#### Documents
+- `POST /api/v1/documents/` - Create multiple documents with embeddings
+- `GET /api/v1/documents/` - List all stored documents
+- `GET /api/v1/documents/{id}` - Retrieve a specific document
+
+#### Search
+- `GET /api/v1/query/?query=text&top_k=5` - Semantic search with ranked results
+
+### Use Cases
+
+- 📚 **Knowledge Base Search**: Find relevant documentation by meaning
+- 🎓 **Educational Content**: Match learning materials to student questions
+- 💼 **Enterprise Search**: Intelligent document retrieval in organizations
+- 🛒 **Product Discovery**: Find products based on natural language descriptions
+- 📰 **Content Recommendation**: Suggest similar articles or posts
+
 ## Installation
 
 1. Clone the repository:
