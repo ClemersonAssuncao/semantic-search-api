@@ -2,5 +2,6 @@ fastapi
 uvicorn[standard]
 sqlalchemy>=2.0
 pydantic
+pydantic_settings
 sentence-transformers
 numpy
