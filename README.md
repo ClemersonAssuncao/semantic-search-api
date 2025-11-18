@@ -72,6 +72,8 @@ The application will be available at:
 - Swagger Docs: `http://localhost:8000/docs`
 - ReDoc: `http://localhost:8000/redoc`
 
+You can use the PostMan Collection **[Postman Collection](postman/Semantic%20Search%20API.postman_collection.json)**
+
 ## Documentation
 
 - **[Embedding Models](docs/embedding-models.md)** - Learn about available embedding models and how to configure them for your semantic search needs
