@@ -57,6 +57,4 @@ class QueryService:
     
     def _cosine_similarities(self, doc_embeddings: np.ndarray, query_embedding: np.ndarray) -> np.ndarray:
         q = query_embedding.reshape(1, -1)
-        doc_norms = np.linalg.norm(doc_embeddings, axis=1)
-        q_norm = np.linalg.norm(q)
-        return (doc_embeddings @ q.T).ravel() / (doc_norms * q_norm + 1e-10)
+        return (doc_embeddings @ q.T).ravel()
